@@ -1,0 +1,20 @@
+{
+  "name": "create-app-wizard-script",
+  "license": "MIT",
+  "version": "1.0.0",
+  "description": "A custom script to create a Next.js app with additional configurations.",
+  "main": "bin/create-app.js",
+  "bin": {
+    "create-app-custom": "bin/create-app-wizard.js"
+  },
+  "scripts": {
+    "setup": "node bin/create-app-wizard.js"
+  },
+  "dependencies": {
+    "inquirer": "^10.1.2"
+  },
+  "engines": {
+    "node": ">=20.15.1"
+  },
+  "packageManager": "yarn@1.22.19"
+}
