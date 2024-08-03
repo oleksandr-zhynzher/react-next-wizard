@@ -1,23 +1,22 @@
 const {
-  getProjectName,
-  getPackageManager,
+  promptProjectName,
+  promptPackageManager,
   promptUseDefaultSettings,
 } = require("../lib/prompts");
+const { setupEslint } = require("../lib/eslint");
 const { createNextApp } = require("../lib/next");
 const { setupPackageManager, setupNodeVersion } = require("../lib/package");
-const { setupEslint } = require("../lib/eslint");
 
 async function main() {
   try {
-    const projectName = await getProjectName();
-    const packageManager = await getPackageManager();
-    
+    await promptProjectName();
+    await promptPackageManager();
     await promptUseDefaultSettings();
 
-    await createNextApp(packageManager, projectName);
-    setupNodeVersion(projectName);
-    setupPackageManager(projectName, packageManager);
-    await setupEslint(packageManager, projectName);
+    await createNextApp();
+    setupNodeVersion();
+    setupPackageManager();
+    await setupEslint();
   } catch (error) {
     console.error("An error occurred:", error);
   }
