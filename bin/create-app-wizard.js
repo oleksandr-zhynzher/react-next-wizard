@@ -6,7 +6,12 @@ const {
 const { createNextApp } = require("../lib/next");
 const { setupEslint } = require("../lib/eslint");
 const { setupPrettier } = require("../lib/prettier");
-const { setupPackageManager, setupNodeVersion } = require("../lib/package");
+const { setupMadge } = require("../lib/madge");
+const {
+  setupNodeVersion,
+  setupResolutions,
+  setupPackageManager,
+} = require("../lib/package");
 
 async function main() {
   try {
@@ -16,9 +21,11 @@ async function main() {
 
     await createNextApp();
     setupNodeVersion();
+    setupResolutions();
     setupPackageManager();
     await setupEslint();
-    await setupPrettier();
+    setupPrettier();
+    setupMadge();
   } catch (error) {
     console.error("An error occurred:", error);
   }
