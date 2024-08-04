@@ -3,8 +3,9 @@ const {
   promptPackageManager,
   promptUseDefaultSettings,
 } = require("../lib/prompts");
-const { setupEslint } = require("../lib/eslint");
 const { createNextApp } = require("../lib/next");
+const { setupEslint } = require("../lib/eslint");
+const { setupPrettier } = require("../lib/prettier");
 const { setupPackageManager, setupNodeVersion } = require("../lib/package");
 
 async function main() {
@@ -17,6 +18,7 @@ async function main() {
     setupNodeVersion();
     setupPackageManager();
     await setupEslint();
+    await setupPrettier();
   } catch (error) {
     console.error("An error occurred:", error);
   }
