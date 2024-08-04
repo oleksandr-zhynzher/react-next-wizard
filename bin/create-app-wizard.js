@@ -7,6 +7,7 @@ const { createNextApp } = require("../lib/next");
 const { setupEslint } = require("../lib/eslint");
 const { setupPrettier } = require("../lib/prettier");
 const { setupMadge } = require("../lib/madge");
+const { setupDepcheck } = require("../lib/depcheck");
 const {
   setupNodeVersion,
   setupResolutions,
@@ -26,6 +27,7 @@ async function main() {
     await setupEslint();
     setupPrettier();
     setupMadge();
+    setupDepcheck();
   } catch (error) {
     console.error("An error occurred:", error);
   }
