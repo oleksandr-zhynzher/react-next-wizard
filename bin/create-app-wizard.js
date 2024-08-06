@@ -8,6 +8,7 @@ const { setupEslint } = require("../lib/eslint");
 const { setupPrettier } = require("../lib/prettier");
 const { setupMadge } = require("../lib/madge");
 const { setupDepcheck } = require("../lib/depcheck");
+const { setupBundleAnalyzer } = require("../lib/bundle-analyzer");
 const {
   setupNodeVersion,
   setupResolutions,
@@ -28,6 +29,7 @@ async function main() {
     setupPrettier();
     setupMadge();
     setupDepcheck();
+    setupBundleAnalyzer();
   } catch (error) {
     console.error("An error occurred:", error);
   }
