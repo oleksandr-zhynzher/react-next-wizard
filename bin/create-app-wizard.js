@@ -26,10 +26,10 @@ async function main() {
     setupResolutions();
     setupPackageManager();
     await setupEslint();
-    setupPrettier();
-    setupMadge();
-    setupDepcheck();
-    setupBundleAnalyzer();
+    await setupPrettier();
+    await setupMadge();
+    await setupDepcheck();
+    await setupBundleAnalyzer();
   } catch (error) {
     console.error("An error occurred:", error);
   }
