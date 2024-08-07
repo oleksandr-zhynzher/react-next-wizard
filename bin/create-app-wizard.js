@@ -3,7 +3,7 @@ const {
   promptPackageManager,
   promptUseDefaultSettings,
 } = require("../lib/prompts");
-const { createNextApp } = require("../lib/next");
+const { setupNextApp } = require("../lib/next");
 const { setupEslint } = require("../lib/eslint");
 const { setupPrettier } = require("../lib/prettier");
 const { setupMadge } = require("../lib/madge");
@@ -14,6 +14,7 @@ const {
   setupResolutions,
   setupPackageManager,
 } = require("../lib/package");
+const { setupWorkingDirectory } = require("../lib/utils/path");
 
 async function main() {
   try {
@@ -21,10 +22,13 @@ async function main() {
     await promptPackageManager();
     await promptUseDefaultSettings();
 
-    await createNextApp();
+    await setupNextApp();
+
+    setupWorkingDirectory();
     setupNodeVersion();
     setupResolutions();
     setupPackageManager();
+
     await setupEslint();
     await setupPrettier();
     await setupMadge();
