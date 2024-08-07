@@ -9,6 +9,7 @@ const { setupPrettier } = require("../lib/prettier");
 const { setupMadge } = require("../lib/madge");
 const { setupDepcheck } = require("../lib/depcheck");
 const { setupBundleAnalyzer } = require("../lib/bundle-analyzer");
+const { setupStorybook } = require("../lib/storybook");
 const {
   setupNodeVersion,
   setupResolutions,
@@ -21,6 +22,7 @@ async function main() {
     await promptProjectName();
     await promptPackageManager();
     await promptUseDefaultSettings();
+    process.chdir('../test');
 
     await setupNextApp();
 
@@ -34,6 +36,7 @@ async function main() {
     await setupMadge();
     await setupDepcheck();
     await setupBundleAnalyzer();
+    setupStorybook();
   } catch (error) {
     console.error("An error occurred:", error);
   }
