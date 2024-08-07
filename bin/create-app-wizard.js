@@ -22,7 +22,7 @@ async function main() {
     await promptProjectName();
     await promptPackageManager();
     await promptUseDefaultSettings();
-    process.chdir('../test');
+    process.chdir("../test");
 
     await setupNextApp();
 
@@ -33,10 +33,10 @@ async function main() {
 
     await setupEslint();
     await setupPrettier();
+    await setupStorybook();
     await setupMadge();
     await setupDepcheck();
     await setupBundleAnalyzer();
-    setupStorybook();
   } catch (error) {
     console.error("An error occurred:", error);
   }
