@@ -13,6 +13,7 @@ const { setupStorybook } = require("../lib/storybook");
 const { setupJest } = require("../lib/jest");
 const { setupNodeVersion, setupPackageManager } = require("../lib/package");
 const { setupLighthouse } = require("../lib/lighthouse");
+const { setupCypress } = require("../lib/cypress");
 const { setupWorkingDirectory } = require("../lib/utils/path");
 const { reportSuccessfulSetup } = require("../lib/utils/reportSuccessfulSetup");
 
@@ -32,6 +33,7 @@ async function main() {
     await setupEslint();
     await setupPrettier();
     await setupJest();
+    await setupCypress();
     await setupStorybook();
     await setupMadge();
     await setupDepcheck();
