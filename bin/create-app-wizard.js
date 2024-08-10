@@ -11,12 +11,9 @@ const { setupDepcheck } = require("../lib/depcheck");
 const { setupBundleAnalyzer } = require("../lib/bundle-analyzer");
 const { setupStorybook } = require("../lib/storybook");
 const { setupJest } = require("../lib/jest");
-const {
-  setupNodeVersion,
-  setupResolutions,
-  setupPackageManager,
-} = require("../lib/package");
+const { setupNodeVersion, setupPackageManager } = require("../lib/package");
 const { setupWorkingDirectory } = require("../lib/utils/path");
+const { reportSuccessfulSetup } = require("../lib/utils/reportSuccessfulSetup");
 
 async function main() {
   try {
@@ -29,7 +26,6 @@ async function main() {
 
     setupWorkingDirectory();
     setupNodeVersion();
-    setupResolutions();
     setupPackageManager();
 
     await setupEslint();
@@ -39,6 +35,7 @@ async function main() {
     await setupMadge();
     await setupDepcheck();
     await setupBundleAnalyzer();
+    reportSuccessfulSetup();
   } catch (error) {
     console.error("An error occurred:", error);
   }
