@@ -14,6 +14,7 @@ const { setupJest } = require("../lib/jest");
 const { setupNodeVersion, setupPackageManager } = require("../lib/package");
 const { setupLighthouse } = require("../lib/lighthouse");
 const { setupCypress } = require("../lib/cypress");
+const { setupHusky } = require("../lib/husky");
 const { setupWorkingDirectory } = require("../lib/utils/path");
 const { reportSuccessfulSetup } = require("../lib/utils/reportSuccessfulSetup");
 
@@ -39,6 +40,7 @@ async function main() {
     await setupDepcheck();
     await setupBundleAnalyzer();
     await setupLighthouse();
+    await setupHusky();
     reportSuccessfulSetup();
   } catch (error) {
     console.error("An error occurred:", error);
