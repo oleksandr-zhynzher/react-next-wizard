@@ -10,6 +10,7 @@ const { setupMadge } = require("../lib/madge");
 const { setupDepcheck } = require("../lib/depcheck");
 const { setupBundleAnalyzer } = require("../lib/bundle-analyzer");
 const { setupStorybook } = require("../lib/storybook");
+const { setupJest } = require("../lib/jest");
 const {
   setupNodeVersion,
   setupResolutions,
@@ -33,6 +34,7 @@ async function main() {
 
     await setupEslint();
     await setupPrettier();
+    await setupJest();
     await setupStorybook();
     await setupMadge();
     await setupDepcheck();
