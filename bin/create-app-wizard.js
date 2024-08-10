@@ -17,6 +17,7 @@ const { setupCypress } = require("../lib/cypress");
 const { setupHusky } = require("../lib/husky");
 const { setupWorkingDirectory } = require("../lib/utils/path");
 const { reportSuccessfulSetup } = require("../lib/utils/reportSuccessfulSetup");
+const { validateApp } = require("../lib/utils/validateApp");
 
 async function main() {
   try {
@@ -41,6 +42,7 @@ async function main() {
     await setupBundleAnalyzer();
     await setupLighthouse();
     await setupHusky();
+    validateApp();
     reportSuccessfulSetup();
   } catch (error) {
     console.error("An error occurred:", error);
