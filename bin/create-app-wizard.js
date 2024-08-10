@@ -12,6 +12,7 @@ const { setupBundleAnalyzer } = require("../lib/bundle-analyzer");
 const { setupStorybook } = require("../lib/storybook");
 const { setupJest } = require("../lib/jest");
 const { setupNodeVersion, setupPackageManager } = require("../lib/package");
+const { setupLighthouse } = require("../lib/lighthouse");
 const { setupWorkingDirectory } = require("../lib/utils/path");
 const { reportSuccessfulSetup } = require("../lib/utils/reportSuccessfulSetup");
 
@@ -35,6 +36,7 @@ async function main() {
     await setupMadge();
     await setupDepcheck();
     await setupBundleAnalyzer();
+    await setupLighthouse();
     reportSuccessfulSetup();
   } catch (error) {
     console.error("An error occurred:", error);
