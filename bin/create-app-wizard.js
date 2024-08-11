@@ -15,6 +15,7 @@ const { setupNodeVersion, setupPackageManager } = require("../lib/package");
 const { setupLighthouse } = require("../lib/lighthouse");
 const { setupCypress } = require("../lib/cypress");
 const { setupHusky } = require("../lib/husky");
+const { setupSnyk } = require("../lib/snyk");
 const { setupWorkingDirectory } = require("../lib/utils/path");
 const { reportSuccessfulSetup } = require("../lib/utils/reportSuccessfulSetup");
 const { validateApp } = require("../lib/utils/validateApp");
@@ -41,7 +42,9 @@ async function main() {
     await setupDepcheck();
     await setupBundleAnalyzer();
     await setupLighthouse();
+    await setupSnyk();
     await setupHusky();
+
     validateApp();
     reportSuccessfulSetup();
   } catch (error) {
