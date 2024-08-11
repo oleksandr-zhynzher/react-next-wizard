@@ -16,6 +16,7 @@ const { setupLighthouse } = require("../lib/lighthouse");
 const { setupCypress } = require("../lib/cypress");
 const { setupHusky } = require("../lib/husky");
 const { setupSnyk } = require("../lib/snyk");
+const { setupDependabot } = require("../lib/dependabot");
 const { setupWorkingDirectory } = require("../lib/utils/path");
 const { reportSuccessfulSetup } = require("../lib/utils/reportSuccessfulSetup");
 const { validateApp } = require("../lib/utils/validateApp");
@@ -43,6 +44,7 @@ async function main() {
     await setupBundleAnalyzer();
     await setupLighthouse();
     await setupSnyk();
+    await setupDependabot();
     await setupHusky();
 
     validateApp();
