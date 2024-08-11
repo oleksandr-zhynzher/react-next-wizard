@@ -19,8 +19,10 @@ const { setupSnyk } = require("../lib/snyk");
 const { setupDependabot } = require("../lib/dependabot");
 const { setupGithubActions } = require("../lib/github-actions");
 const { setupWorkingDirectory } = require("../lib/utils/path");
+const { setupCodecov } = require("../lib/codecov");
 const { reportSuccessfulSetup } = require("../lib/utils/reportSuccessfulSetup");
 const { validateApp } = require("../lib/utils/validateApp");
+const { setupAppPreview } = require("../lib/utils/setupAppPreview");
 
 async function main() {
   try {
@@ -46,9 +48,11 @@ async function main() {
     await setupLighthouse();
     await setupSnyk();
     await setupDependabot();
+    await setupCodecov();
     await setupHusky();
     await setupGithubActions();
 
+    setupAppPreview();
     validateApp();
     reportSuccessfulSetup();
   } catch (error) {
