@@ -17,6 +17,7 @@ const { setupCypress } = require("../lib/cypress");
 const { setupHusky } = require("../lib/husky");
 const { setupSnyk } = require("../lib/snyk");
 const { setupDependabot } = require("../lib/dependabot");
+const { setupGithubActions } = require("../lib/github-actions");
 const { setupWorkingDirectory } = require("../lib/utils/path");
 const { reportSuccessfulSetup } = require("../lib/utils/reportSuccessfulSetup");
 const { validateApp } = require("../lib/utils/validateApp");
@@ -46,6 +47,7 @@ async function main() {
     await setupSnyk();
     await setupDependabot();
     await setupHusky();
+    await setupGithubActions();
 
     validateApp();
     reportSuccessfulSetup();
