@@ -1,29 +1,33 @@
 const {
+  setupNext,
+  setupJest,
+  setupKnip,
+  setupSnyk,
+  setupHusky,
+  setupMadge,
+  setupEslint,
+  setupCodecov,
+  setupCypress,
+  setupDepcheck,
+  setupPrettier,
+  setupStorybook,
+  setupLighthouse,
+  setupDependabot,
+  setupGithubActions,
+  setupBundleAnalyzer,
+} = require("../lib/tools");
+const {
   promptProjectName,
   promptPackageManager,
   promptUseDefaultSettings,
 } = require("../lib/prompts");
-const { setupNextApp } = require("../lib/next");
-const { setupEslint } = require("../lib/eslint");
-const { setupPrettier } = require("../lib/prettier");
-const { setupMadge } = require("../lib/madge");
-const { setupDepcheck } = require("../lib/depcheck");
-const { setupBundleAnalyzer } = require("../lib/bundle-analyzer");
-const { setupStorybook } = require("../lib/storybook");
-const { setupJest } = require("../lib/jest");
+const {
+  setupWorkingDirectory,
+  reportSuccessfulSetup,
+  validateApp,
+  setupAppPreview,
+} = require("../lib/utils");
 const { setupNodeVersion, setupPackageManager } = require("../lib/package");
-const { setupLighthouse } = require("../lib/lighthouse");
-const { setupCypress } = require("../lib/cypress");
-const { setupHusky } = require("../lib/husky");
-const { setupSnyk } = require("../lib/snyk");
-const { setupDependabot } = require("../lib/dependabot");
-const { setupGithubActions } = require("../lib/github-actions");
-const { setupWorkingDirectory } = require("../lib/utils/path");
-const { setupCodecov } = require("../lib/codecov");
-const { setupKnip } = require("../lib/knip");
-const { reportSuccessfulSetup } = require("../lib/utils/reportSuccessfulSetup");
-const { validateApp } = require("../lib/utils/validateApp");
-const { setupAppPreview } = require("../lib/utils/setupAppPreview");
 
 async function main() {
   try {
@@ -32,7 +36,7 @@ async function main() {
     await promptUseDefaultSettings();
     process.chdir("../test");
 
-    await setupNextApp();
+    await setupNext();
 
     setupWorkingDirectory();
     setupNodeVersion();
