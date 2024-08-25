@@ -20,6 +20,7 @@ const { setupDependabot } = require("../lib/dependabot");
 const { setupGithubActions } = require("../lib/github-actions");
 const { setupWorkingDirectory } = require("../lib/utils/path");
 const { setupCodecov } = require("../lib/codecov");
+const { setupKnip } = require("../lib/knip");
 const { reportSuccessfulSetup } = require("../lib/utils/reportSuccessfulSetup");
 const { validateApp } = require("../lib/utils/validateApp");
 const { setupAppPreview } = require("../lib/utils/setupAppPreview");
@@ -46,6 +47,7 @@ async function main() {
     await setupDepcheck();
     await setupBundleAnalyzer();
     await setupLighthouse();
+    await setupKnip();
     await setupSnyk();
     await setupDependabot();
     await setupCodecov();
