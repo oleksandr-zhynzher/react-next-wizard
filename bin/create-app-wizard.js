@@ -15,6 +15,7 @@ const {
   setupDependabot,
   setupGithubActions,
   setupBundleAnalyzer,
+  setupEslintForFramework,
 } = require("../lib/tools");
 const {
   promptProjectName,
@@ -43,6 +44,7 @@ async function main() {
     setupPackageManager();
 
     await setupEslint();
+    await setupEslintForFramework();
     await setupPrettier();
     await setupJest();
     await setupCypress();
