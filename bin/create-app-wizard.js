@@ -20,13 +20,8 @@ const {
   promptPackageManager,
   promptUseDefaultSettings,
 } = require("../lib/prompts");
-const {
-  setupWorkingDirectory,
-  reportSuccessfulSetup,
-  validateApp,
-} = require("../lib/utils");
 const { setupFramework } = require("../lib/frameworks");
-const { setupNodeVersion, setupPackageManager } = require("../lib/package");
+const { reportSuccessfulSetup, validateApp } = require("../lib/utils");
 
 async function main() {
   try {
@@ -36,10 +31,6 @@ async function main() {
     process.chdir("../test");
 
     await setupFramework();
-
-    setupWorkingDirectory();
-    setupNodeVersion();
-    setupPackageManager();
 
     await setupEslint();
     await setupPrettier();
