@@ -1,5 +1,4 @@
 const {
-  setupNext,
   setupJest,
   setupKnip,
   setupSnyk,
@@ -15,7 +14,6 @@ const {
   setupDependabot,
   setupGithubActions,
   setupBundleAnalyzer,
-  setupEslintForFramework,
 } = require("../lib/tools");
 const {
   promptProjectName,
@@ -26,8 +24,8 @@ const {
   setupWorkingDirectory,
   reportSuccessfulSetup,
   validateApp,
-  setupAppPreview,
 } = require("../lib/utils");
+const { setupFramework } = require("../lib/frameworks");
 const { setupNodeVersion, setupPackageManager } = require("../lib/package");
 
 async function main() {
@@ -37,14 +35,13 @@ async function main() {
     await promptUseDefaultSettings();
     process.chdir("../test");
 
-    await setupNext();
+    await setupFramework();
 
     setupWorkingDirectory();
     setupNodeVersion();
     setupPackageManager();
 
     await setupEslint();
-    await setupEslintForFramework();
     await setupPrettier();
     await setupJest();
     await setupCypress();
@@ -60,7 +57,6 @@ async function main() {
     await setupHusky();
     await setupGithubActions();
 
-    setupAppPreview();
     validateApp();
     reportSuccessfulSetup();
   } catch (error) {
